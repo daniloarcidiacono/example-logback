@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- Most basic format -->
+<!--            <pattern>%m%n</pattern>-->
+
+            <!-- With logging level -->
+<!--            <pattern>%p - %m%n</pattern>-->
+
+            <!-- With logger name -->
+<!--            <pattern>%p - %logger - %m%n</pattern>-->
+
+            <!-- With datetime -->
+<!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} - %p - %logger - %m%n</pattern>-->
+
+            <!-- Limits each field size to have aligned rows -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} - %5p - %40.40logger{39} - %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Setting additivity to false prevents the appender to bubble up towards the root, which
+         would cause the logs to be written twice -->
+    <logger name="com.objectway.stage.examples.logging.controller" level="TRACE" additivity="false">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+
+    <!-- The root logger always has a level (DEBUG is the default) -->
+    <root>
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>
